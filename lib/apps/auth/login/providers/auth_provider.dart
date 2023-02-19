@@ -1,0 +1,61 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:git_test_app/apps/auth/login/login_screen.dart';
+import 'package:git_test_app/apps/home/home_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../../../general/service/page_transition.dart';
+import '../../../../widgets/toast/k_toasr.dart';
+
+class AuthNotifier {
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+  KToast toast = KToast();
+
+  register({required String email, required String password, context}) async {
+    try {
+      final credential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      var authCredential = credential.user;
+      if (authCredential!.uid.isNotEmpty) {
+        Navigator.pushReplacement(
+          context,
+          BottomTransition(const LoginScreen()),
+        );
+      }
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        toast.toastMsg(msg: "The password provided is too weak");
+      } else if (e.code == 'email-already-in-use') {
+        toast.toastMsg(msg: "he account already exists for that email");
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  login({required String email, required String password, context}) async {
+    try {
+      final credential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
+      var authCredential = credential.user;
+      if (authCredential!.uid.isNotEmpty) {
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString('token', authCredential.uid);
+        print('############# this is ${authCredential.uid}');
+        Navigator.pushReplacement(
+          context,
+          BottomTransition(const HomeScreen()),
+        );
+      }
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        toast.toastMsg(msg: "No user found for that email.");
+      } else if (e.code == 'wrong-password') {
+        toast.toastMsg(msg: "Wrong password provided for that user.");
+      }
+    }
+  }
+}

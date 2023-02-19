@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:git_test_app/Widgets/TextField/password_textfield.dart';
-import 'package:git_test_app/apps/login/components/auth_msg.dart';
-import 'package:git_test_app/apps/login/providers/login_provider.dart';
+import 'package:git_test_app/apps/auth/login/providers/auth_provider.dart';
 import 'package:git_test_app/general/utils/config.dart';
 import 'package:git_test_app/widgets/button/custom_btn.dart';
 import 'package:git_test_app/widgets/button/or/k_or.dart';
 import 'package:git_test_app/widgets/textField/k_textField.dart';
-import '../../widgets/button/google_btn.dart';
-import 'components/forget_password.dart';
+import '../../../widgets/button/google_btn.dart';
+import '../login/components/auth_msg.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   final globalKey = GlobalKey<FormState>();
@@ -38,8 +38,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const AuthMessage(
-                    title: "Hi! Welcome Back",
-                    subtitle: "Log in to your account",
+                    title: "Hi! Welcome",
+                    subtitle: "Register in to your account",
                   ),
                   SizedBox(height: context.screenHeight * 0.1),
                   KTextField(
@@ -58,17 +58,15 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Colors.black.withOpacity(0.3)),
                   ),
                   const SizedBox(height: 12),
-                  ForgetPassword(onPressed: () {}),
-                  const SizedBox(height: 12),
                   KButton(
                     btnColor: Colors.lightBlue,
                     btnWidth: context.screenWidth,
-                    btnText: 'Login',
+                    btnText: 'Register',
                     tap: () {
                       authNotifier.register(
-                        email: email.text,
-                        password: password.text,
-                        context: context
+                          email: email.text,
+                          password: password.text,
+                          context: context
                       );
                     },
                   ),

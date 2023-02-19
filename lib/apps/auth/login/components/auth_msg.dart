@@ -14,18 +14,18 @@ class AuthMessage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
+      children: [
         Text(
-          'Hi! Welcome Back',
-          style: TextStyle(
+          title!,
+          style: const TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.w700,
           ),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Text(
-          'Log in to your account',
-          style: TextStyle(
+          subtitle!,
+          style: const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w500,
           ),
