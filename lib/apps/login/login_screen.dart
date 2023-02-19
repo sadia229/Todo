@@ -1,0 +1,86 @@
+import 'package:flutter/material.dart';
+import 'package:git_test_app/Widgets/TextField/password_textfield.dart';
+import 'package:git_test_app/apps/login/components/auth_msg.dart';
+import 'package:git_test_app/apps/login/providers/login_provider.dart';
+import 'package:git_test_app/general/utils/config.dart';
+import 'package:git_test_app/widgets/button/custom_btn.dart';
+import 'package:git_test_app/widgets/button/or/k_or.dart';
+import 'package:git_test_app/widgets/textField/k_textField.dart';
+import '../../widgets/button/google_btn.dart';
+import 'components/forget_password.dart';
+
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+  final globalKey = GlobalKey<FormState>();
+  AuthNotifier authNotifier = AuthNotifier();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      resizeToAvoidBottomInset: false,
+      body: Center(
+        child: Container(
+          margin: const EdgeInsets.only(left: 20, right: 20, top: 40),
+          child: Form(
+            key: globalKey,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const AuthMessage(
+                    title: "Hi! Welcome Back",
+                    subtitle: "Log in to your account",
+                  ),
+                  SizedBox(height: context.screenHeight * 0.1),
+                  KTextField(
+                    label: "Email",
+                    icon: Icon(
+                      Icons.email_outlined,
+                      color: Colors.black.withOpacity(0.3),
+                    ),
+                    controller: email,
+                  ),
+                  const SizedBox(height: 12),
+                  PasswordTextField(
+                    label: "Password",
+                    controller: password,
+                    icon: Icon(Icons.vpn_key_outlined,
+                        color: Colors.black.withOpacity(0.3)),
+                  ),
+                  const SizedBox(height: 12),
+                  ForgetPassword(onPressed: () {}),
+                  const SizedBox(height: 12),
+                  KButton(
+                    btnColor: Colors.lightBlue,
+                    btnWidth: context.screenWidth,
+                    btnText: 'Login',
+                    tap: () {
+                      authNotifier.register(
+                        email: email.text,
+                        password: password.text,
+                        context: context
+                      );
+                    },
+                  ),
+                  const Or(),
+                  const CustomGoogleBtn(),
+                  const SizedBox(height: 40),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
