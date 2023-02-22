@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:git_test_app/apps/auth/login/login_screen.dart';
 import 'package:git_test_app/apps/home/home_screen.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../general/service/page_transition.dart';
@@ -58,4 +59,28 @@ class AuthNotifier {
       }
     }
   }
+
+  signInWithGoogle({context}) async {
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+    //return await FirebaseAuth.instance.signInWithCredential(credential);
+    UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+    print(userCredential.user?.displayName);
+    if (userCredential.user!.uid.isNotEmpty) {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString('token', userCredential.user!.uid);
+      print('token from google ${userCredential.user!.uid}');
+      Navigator.pushReplacement(
+        context,
+        BottomTransition(const HomeScreen()),
+      );
+    }
+  }
+
 }
+

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:git_test_app/apps/auth/login/providers/auth_provider.dart';
 
-class CustomGoogleBtn extends StatelessWidget {
+class CustomGoogleBtn extends StatefulWidget {
   final String? btnText;
   final VoidCallback? onPressed;
 
@@ -9,14 +10,24 @@ class CustomGoogleBtn extends StatelessWidget {
       : super(key: key);
 
   @override
+  State<CustomGoogleBtn> createState() => _CustomGoogleBtnState();
+}
+
+class _CustomGoogleBtnState extends State<CustomGoogleBtn> {
+  AuthNotifier authNotifier = AuthNotifier();
+
+  @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onPressed,
+      onTap: () async{
+        await authNotifier.signInWithGoogle(context: context);
+      },
       child: Container(
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: const Color(0xFFE2E8F0), width: 1)),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: const Color(0xFFE2E8F0), width: 1),
+        ),
         height: 56,
         child: Center(
           child: Row(
