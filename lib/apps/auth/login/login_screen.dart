@@ -8,6 +8,7 @@ import 'package:git_test_app/widgets/textField/k_textField.dart';
 import '../../../widgets/button/google_btn.dart';
 import 'components/auth_msg.dart';
 import 'components/forget_password.dart';
+import 'components/new_account.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -59,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const SizedBox(height: 12),
                   ForgetPassword(onPressed: () {}),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 16),
                   KButton(
                     btnColor: Colors.lightBlue,
                     btnWidth: context.screenWidth,
@@ -72,6 +73,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       );
                     },
                   ),
+                  const SizedBox(height: 16),
+                  const NewAccount(),
                   const Or(),
                   const CustomGoogleBtn(),
                   const SizedBox(height: 40),

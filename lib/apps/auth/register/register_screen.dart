@@ -29,19 +29,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
       resizeToAvoidBottomInset: false,
       body: Center(
         child: Container(
-          margin: const EdgeInsets.only(left: 20, right: 20, top: 40),
+          margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
           child: Form(
             key: globalKey,
             child: SingleChildScrollView(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const AuthMessage(
                     title: "Hi! Welcome",
                     subtitle: "Register in to your account",
                   ),
-                  SizedBox(height: context.screenHeight * 0.1),
+                  SizedBox(height: context.screenHeight * 0.05),
                   KTextField(
                     label: "Email",
                     icon: Icon(
@@ -57,7 +57,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     icon: Icon(Icons.vpn_key_outlined,
                         color: Colors.black.withOpacity(0.3)),
                   ),
-                  const SizedBox(height: 12),
+                  SizedBox(height: context.screenHeight*0.1),
                   KButton(
                     btnColor: Colors.lightBlue,
                     btnWidth: context.screenWidth,
@@ -70,8 +70,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       );
                     },
                   ),
-                  const Or(),
-                  const CustomGoogleBtn(),
                   const SizedBox(height: 40),
                 ],
               ),

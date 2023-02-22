@@ -8,7 +8,7 @@ class Or extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: context.screenHeight*0.08),
+      margin: EdgeInsets.symmetric(vertical: context.screenHeight*0.05),
       child: TextDivider.horizontal(
         text: const Text('or'),
         color: Colors.black.withOpacity(0.4),
