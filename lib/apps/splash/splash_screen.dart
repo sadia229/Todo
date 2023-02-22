@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:git_test_app/apps/auth/login/login_screen.dart';
+import 'package:git_test_app/apps/main_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../general/service/page_transition.dart';
@@ -30,7 +31,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
       // ignore: use_build_context_synchronously
       Navigator.pushReplacement(
         context,
-        BottomTransition(const HomeScreen()),
+        BottomTransition(const MainScreen()),
       );
     } else {
       // ignore: use_build_context_synchronously

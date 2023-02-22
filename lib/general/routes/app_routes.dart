@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:git_test_app/apps/auth/register/register_screen.dart';
 import 'package:git_test_app/apps/home/home_screen.dart';
+import 'package:git_test_app/apps/main_screen.dart';
 import 'package:git_test_app/apps/splash/splash_screen.dart';
 
 import '../../apps/auth/login/login_screen.dart';
@@ -13,6 +14,10 @@ class RouteGenerator {
       case '/splash':
         return MaterialPageRoute(
           builder: (_) => const SplashScreen(),
+        );
+      case '/main':
+        return MaterialPageRoute(
+          builder: (_) => const MainScreen(),
         );
       case '/register':
         return MaterialPageRoute(
