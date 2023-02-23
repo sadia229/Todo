@@ -83,7 +83,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         img: homeIcon[index],
                         text: home[index],
                         color: homeColor[index],
-                        tap: () {},
+                        tap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => menuPages[index],
+                            ),
+                          );
+                        },
                       );
                     },
                   ),
