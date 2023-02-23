@@ -1,16 +1,13 @@
-# git_test_app
+# HealX
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Feature List
+    1.Target Today Todos
+    2.Set Todos
+    3.Set Drink Water Target
+    4.Set Reminder 
+    5.Set Weekly Target List
+    6. Secrate Data Lock System
+    7. Everyday Count Calories
+    8. Exercise
+    9. Reward For Complete Todos and make a graph (day based, Weekly)
+    10. Mental Health (Graph)
