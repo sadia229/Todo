@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intl/intl.dart';
 import '../../general/utils/colors.dart';
 import '../../general/utils/text_style.dart';
 
@@ -12,7 +11,6 @@ class KAppBar extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final user = FirebaseAuth.instance.currentUser;
-    final DateTime now = DateTime.now();
 
     return AppBar(
      backgroundColor: KColor.header,
