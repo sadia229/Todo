@@ -20,6 +20,7 @@ class AuthNotifier {
         password: password,
       );
       var authCredential = credential.user;
+      print(" register sign in displayname: ${credential.user?.displayName}");
       if (authCredential!.uid.isNotEmpty) {
         Navigator.pushReplacement(
           context,
@@ -46,6 +47,7 @@ class AuthNotifier {
         final prefs = await SharedPreferences.getInstance();
         await prefs.setString('token', authCredential.uid);
         print('############# this is ${authCredential.uid}');
+        print(" email sign in displayname: ${authCredential.displayName}");
         Navigator.pushReplacement(
           context,
           BottomTransition(const HomeScreen()),
@@ -79,6 +81,7 @@ class AuthNotifier {
         context,
         BottomTransition(const HomeScreen()),
       );
+      print(" gogle sign in displayname: ${userCredential.user?.displayName}");
     }
   }
 

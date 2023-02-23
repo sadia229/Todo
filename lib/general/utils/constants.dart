@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:git_test_app/apps/todo/todo_screen.dart';
 import 'package:git_test_app/general/utils/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -35,4 +36,11 @@ List<Color> homeColor = [
   KColor.card2,
   KColor.card3,
   KColor.card4
+];
+
+List<Widget> menuPages = [
+  Container(),
+  TodoScreen(),
+  Container(),
+  Container(),
 ];

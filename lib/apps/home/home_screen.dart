@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:git_test_app/general/utils/config.dart';
 import 'package:git_test_app/general/utils/text_style.dart';
-import '../../general/utils/asset_path.dart';
 import '../../general/utils/colors.dart';
 import '../../widgets/appbar/k_appbar.dart';
 import 'components/banner_scetion.dart';
@@ -84,6 +83,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         img: homeIcon[index],
                         text: home[index],
                         color: homeColor[index],
+                        tap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => menuPages[index],
+                            ),
+                          );
+                        },
                       );
                     },
                   ),
