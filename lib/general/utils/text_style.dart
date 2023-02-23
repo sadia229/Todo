@@ -14,12 +14,12 @@ class KTextStyle {
   );
   static TextStyle headline3 = TextStyle(
     fontSize: 20,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w500,
     fontFamily: GoogleFonts.poppins().fontFamily,
   );
   static TextStyle title1 = TextStyle(
     fontSize: 18,
-    fontWeight: FontWeight.w700,
+    fontWeight: FontWeight.w400,
     fontFamily: GoogleFonts.poppins().fontFamily,
   );
   static TextStyle title2 = TextStyle(

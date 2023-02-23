@@ -11,6 +11,14 @@ class KColor {
   static Color black = const Color(0xFF000000);
   static Color textFieldBorder = const Color(0xFFE2E8F0);
   static Color textFieldFocusBorder = const Color(0xFF93D5D0);
+  static Color banner1 = const Color(0xFF5D3891);
+  static Color banner2 = Colors.green;
+  static Color banner3 = const Color(0xFF27B794);
+  static Color card1 = const Color(0xFFFCD0CD);
+  static Color card2 = const Color(0xFFFFFACE);
+  static Color card3 = const Color(0xFFD2EBD3);
+  static Color card4 = const Color(0xFFD9CEED);
+  static Color header = const Color(0xFF736EE5);
   static Color strongAgree = Colors.green;
   static Color favBg = Colors.orange.shade100.withOpacity(0.7);
 }
